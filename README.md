@@ -39,6 +39,8 @@ var qr_options = {
 * 第四步<br>
 修改完后，复制整个文件内容<br>
 在想要发送弹幕的时间处，选择`高级弹幕`(需取得作者同意)，在选择`代码弹幕`，在`脚本`框处，粘贴，发送。
+![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref5.png)
+![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref6.png)
 
 * DUANG!
 ![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref2.png)
@@ -51,12 +53,14 @@ var qr_options = {
 如果没有，请打开`http://open.weixin.qq.com/qr/code/?username=微信公众号`获取<br>
 
 然后打开[二维码解码工具](http://tool.chinaz.com/qrcode)，对二维码图片解码，得到的字符串就是上面要填的url啦，enjoy!
+![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref4.png)
 
 ### 二维码中央显示小图
 如果想在二维码上显示图片怎么办?
 
 这个比较麻烦，首先需要将要显示的图片保存为64*64分辨率，24位bmp格式，同时翻转行序。<br>
 然后打开[图片转BASE64工具](http://tool.css-js.com/base64.html)，将图片编码，注意不要勾选`包含头`。<br>
+![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref3.png)
 将得到的字符串填充到上文中的image_data中，注意要用双引号引起来。
 
 好了，就是这些，也没啥技术含量，话说B站的弹幕引擎真够烂的，啥时候放弃flash，如果能用上webGL就好了。
