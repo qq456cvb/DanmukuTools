@@ -59,8 +59,13 @@ var qr_options = {
 如果想在二维码上显示图片怎么办?
 
 这个比较麻烦，首先需要将要显示的图片保存为64*64分辨率，24位bmp格式，同时翻转行序。<br>
+以Photoshop为例:
+![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref7.png)
+![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref8.png)
+
 然后打开[图片转BASE64工具](http://tool.css-js.com/base64.html)，将图片编码，注意不要勾选`包含头`。<br>
 ![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref3.png)
+
 将得到的字符串填充到上文中的image_data中，注意要用双引号引起来。
 
 好了，就是这些，也没啥技术含量，话说B站的弹幕引擎真够烂的，啥时候放弃flash，如果能用上webGL就好了。
