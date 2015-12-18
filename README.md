@@ -1,5 +1,6 @@
 弹幕版二维码（基于JQuery移植）
-====
+===
+![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref1.png)
 ## 使用方法
 * 第一步<br>
 下载`qrcode.js`<br>
@@ -37,9 +38,10 @@ var qr_options = {
 
 * 第四步<br>
 修改完后，复制整个文件内容<br>
-在想要发送弹幕的时间处，选择`高级弹幕`(需取得作者同意)，在选择`代码弹`幕，在`脚本`框处，粘贴，发送。
+在想要发送弹幕的时间处，选择`高级弹幕`(需取得作者同意)，在选择`代码弹幕`，在`脚本`框处，粘贴，发送。
 
 * DUANG!
+![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref2.png)
 
 ## 高级玩法
 ### 微信公众号
