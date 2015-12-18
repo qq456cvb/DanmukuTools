@@ -3,7 +3,7 @@
 ![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref1.png)
 ## 使用方法
 * 第一步<br>
-下载`qrcode.js`<br>
+[下载](https://github.com/qq456cvb/DanmukuTools/archive/master.zip)，解压出`qrcode.js`<br>
 * 第二步<br>
 打开下载的文件，搜索`qr_options`，或者跳转到1283行<br>
 * 第三步<br>
