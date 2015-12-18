@@ -1,3 +1,6 @@
+
+// Transported to Bilibili by Neil You, Shanghai Jiao Tong University
+
 //---------------------------------------------------------------------
 // QRCode for JavaScript
 //
@@ -14,20 +17,6 @@
 //
 //---------------------------------------------------------------------
 
-//---------------------------------------------------------------------
-// QR8bitByte
-//---------------------------------------------------------------------
-
-// a = function(t) {
-// 	var list = [];
-// 	var k = [];
-// 	k.t = 3;
-// 	list.push(k);
-// 	trace(list[0].t);
-// 	return list;
-// };
-
-// trace((a(0)).t);
 
 function QR8bitByte(data) {
 	var qr8bitByte = {};
@@ -1273,18 +1262,60 @@ function QRBitBuffer() {
 }
 
 /*------------------------------------------action script----------------------------------------*/
+
+var BASE64_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 var width = Player.width;
 var height = Player.height;
-var INT_MAX = 1 << 31;
+var INT_MAX = 1 << 31 - 1;
 var TOP_LEFT = 0, TOP_RIGHT = 1, BOTTOM_LEFT = 2, BOTTOM_RIGHT = 3;
 var qr_size = height / 6;
-var margin = height/30;
+var img_size = qr_size / 4;
+var margin = height / 30;
 var posIndex = [
 	{x:margin, y:margin},
 	{x:width-margin-qr_size, y:margin},
 	{x:margin, y:height-margin-qr_size},
 	{x:width-margin-qr_size, y:height-margin-qr_size}
 ];
+
+
+/*********************************hei hei hei**************************************/
+var qr_options = {
+	position: BOTTOM_LEFT,
+	url: "http://www.baidu.com",
+	lifeTime: 5,
+	color: 0x000000,
+	text: "我们要发财了",
+	text_color: 0x00FF00,
+	text_size: 18,
+	image_data: "Qk04MAAAAAAAADYAAAAoAAAAQAAAAMD///8BABgAAAAAAAIwAAASCwAAEgsAAAAAAAAAAAAA/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/////////////////////////////////////////////////v7+////////09PT9/f3/////v7+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////kpKSAQEBQkJC8fHx/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////5+fnJSUlMjIyBgYGmZmZ/////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////vLy9HR0dUVBPHx8edHR0/////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////t7i3HR4bS01KHB0aeHh3/////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+///////////+MC85HBs1BwQUoaCi/////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/f39////////////qKinKSczFBAtFRAsQkFEfX592dnZ/////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////////v7+/Ojo7DAwMMTQvQ0JDREZGKSspCgoKFxcXbm5u/////////f39/////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////h4eHCgoKHh4eTU5PS0xPTEZHRklGSEtKUVBROzs7BAQEQUFB9PT0/////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////////ZWVlAQEBQUFBT09OREVFRUVFR0ZDRUZDREVFRUVFSEhIUlJSDQ0NPz8//f39/////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////lpaWAAAAODg4S0tLRERERUVFRUVFREVFRUVFRUVFRUVFRUVFSUlJPz8/AAAAjY2N/////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////u7u7cnJyZ2dnIyMjTU1NRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFVlZWFhYWZWVlc3Nzzc3N/////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+////////e3t7paWlkZGRCwsLSkpKT09PSEhIRkZGRUVFRUVFR0dHTk5OSEhIHh4eFxcXwsLCh4eHkZGR/////////v7+/v7+/v7+/v7+//////////7+/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+////5+fncHBwvb291NTUbGxsAAAAEhISLS0tQUFBSUlJRkZGNjY2FBQUFBQULCwsgICA5OTkkpKSe3t7/////////v7+/v7+/v7+/v7+/v39/////////v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+////xcXFcXFxysrK2NjYm5ubaWlpd3d3MTExGhoaEBAQEhISKioqVVVVv7+/0dHRhoaG1dXVq6urdHR0+fn5/////v7+///+/f7/////////uOnv5fr5//////7+/f7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+////t7e3dnZ2zMzM09PTaGhoxcXF////9/f3zMzMx8fHxcXF6+vr////////6urqYWFhv7+/vLy8d3d36enp/////f39////////z83MdYyJoeTn6vv7//////7+/f7+/v7+////////////////1Pz/gvb/V/T/U/T/SfP/z/z//////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+////uLi4dnZ20NDQu7u7X19f5+fn////////////8PDw////////zMzM////////dXV1cnJy4ODgZGRk7e3t/////////v7+fH59XmBeTkxNusnN/////f/+/v7+/f7+/v7+////////////0Pz/GvD/D+7/JPX/KPT/AO3/bPX//////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/f39////wsLCd3d3+vr6b29vbm5u////////////z8/PT09P09PT5OTkcHBwa2tr8vLx4+PiMjIynJycREREiYmJ////ubm5SEZHPUI/8vb12tTXmpaY////+f/++/7+/v7+/v7+////////7v7/P/L/HvD/P/L/PPL/Pfj/LPH/RPL/9f7//////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/f39////vr6+WFhYi4uLLS0t2tra////5+fnq6urZ2dnZ2dn7u7uubm5vr6+srKxsrC2////vLy8CwsKg4KDoKCgnp6eS0tLi4qLwcLB5efm6evsiY2M/v7+/f///P7+/v7+/v7+////////vfv/Fu//PfP/P/3/MaOkMqepOf7/LPH/1/z//////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+////////wMDAUlJSLS0tIiIiv7+/////////jY2NBAQEDAwMYGBg+vr6zMzMeHh4bGxsk5KW8vDz////oKCeq6us0tLSlZWVlpaWsrKyqampwMDA////kZCQ0dHR/////////v7+/v7+////////uPv/IPD/O/L/QP//M66xLYJ+OP//MPP/2Pz//////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+////6enpZWVlyMjIg4OD6Ojo/////////v7+paWlbGxsd3d3lpaW6urq8PDwpqamUlJTk5SS////////29vatra2xMTEw8PDqqqqfX19urq6srKy////pKSkpaWl/////////v7+/v7+////////xf//JPT/OvL/PPX/PO35OdzmNfT/MfL/2fz//////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+////sLCwnp6e////enl6///////////+///+////////+Pj4vb296enp/f399vb2+Pj4//////79////4uHjq6uqsLCwwcHBzs7ObGxsxsbGqqqq/f39zMzMjo6O/////////v7+/v7+////////tPX/IPH/Pv7/PfT/PPf/Pv//NPH/MfH/2fz//////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+////qampqKio+fn5dXZ0////+vn88/H2/Pz9////////0tHS2dnZ////9PT0/v7+////////+ff/8Oz6/Pv9nZ6bXl5d1dTV9vb2bm5uvLy8pKSk4uLi+vr6jY2N9/f3/////v7+/v7+////////V779CKn9MMr+PfX/Pvj/PPH/NPL/MfH/2fz//////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+////ycnJhISE5OLjen15+v3/4N351tHz6+f4////8/Pzvr6/jIyLzc3N4+Pj19fX8PDv////4+X6zc319/f/g4mOQUI9////////fX19l5eXqampycnJ////jY2Nvb29/////v7+/v7+////////b8n+B5z9Hpf9Mc7+P/z/PPP/M/L/MfH/8v7//////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+////////X19fiYeHnqKf6vH/ysv5wb734Nv77e7vysnI////qquqU1NTp6en6urq3d3b+fv72uL3xcr32db/uLrLhIWB////////lpaWdXV1urq6t7e3////n5+fj4+P/////v7+/v7+////////hNH+BqL9IqX9IZ39N+L/P/z/OPL/LfH/p/n/4f3/8/7/9f7/9f7/8/7/8/7//////////////////////////////v7+/v7+/v7+/v7+/v7+////////ycnJMjIxaWxo9/n/xMf5t7n32tr/5ObqrKioqqqqvLy8wcHB6Ojo////1dXT6+3t3uf7yM/11NL/2drshoeD+Pf2////ubm5bGxsx8fHqKio9fX14eHhhISE////////////////////YMT9Apn9Jaf9LcL9O+//Pff/PfL/OvL/KfH/N/L/RfP/RvP/RvP/RPP/N/L/e/b//////////////////////////v7+/v7+/v7+/v7+/v7+/v7++/v7////4ODga2pm4d/m1tn9v8X23OL//f7/j4qKVVVVoqKi0tLS2dnZqampt7e19PH07vD/2N324+b/4ObugoN99/X2////6Ojoc3NztLS0o6Ojzc3N////pKSkzc3N////////////////1Pr/J9/+MuX/P/v/PfX/O/H/PPL/PfL/OfL/MvH/LfH/LfH/LfH/LvH/K/H/Au7/ivf//////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////jI2LsbS4+fn/3dv28ez9////0dDOdHR0kZGRjY2Nnp6eenp6xMTD7evs/v3+8vL1+/3+0NfWfIF+//7+////////f39/jIyMvr6+2dnZ3t7eYGBgrKys////////////////4f//Nvz/Nvv/PPP/PPH/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PfL/LvH/LvH/7P7//////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////nJyciYyM////+vz///3/////////gICAQUFBWlpaNjY2x8fH9PX15ufn//////78////kJSThYuL////////////lJSUhISEzMzMYWFhTk5OlpaW8vLy/v7+////////////2fz/MfH/NPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/G/D/ufr//////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////6ejoYmFh8fXx///////9////////6enp8fHx9fX10dHR////6+vr/Pz8/v7+////7e7uR0lJ3uDg//////7+////1tbWPj4+CwsLU1NT9vb2/////////v7+////////////4f3/N/L/M/H/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/GfD/nvn//////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////k4+OXF5c/////////v7/////6OjovLy8ycnJ9PT0/////v7+////////8PDwTExKpKSk////////////////////KSkpKCgooqOj8PDw/////////v7+////////////5f3/OvL/MfH/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/GfD/ivj//////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v//////////bm1vcXFy////////////////////////////////////////u7q6GhoYbG1o////////+fz++vz9////////dXR2uLm4vr68rKys//////////7+/f7+/v//////6P3/O/L/MvH/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/GvD/jfj//////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////2dnYEREQWFhYqKmo2dnZ/Pz8////////+Pj4ycnJmpqaW11bPjo7KSY3GBc2f4CB////////////////29jYc3N2hImJ397bs7Ky/v7+/////v7+/f7+/v//////9v7/QvL/LvH/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/GfD/iPj//////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////kZGRY2Nja2trNzc3PT09Pz8/RUVFSUlJOjo6Li4uODg4VFZUmJaUSUZTCg9WAAMyaWFp6+nj0dHJfn+EYGJj09bSQENEeXZ8ysnJ/Pz8/////v7+////////////////ZvX/HPD/PfL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PvL/E/D/kfj//////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////6OjmPDw4XVxZnZ2foKChiYiHamtpW1tbXV1da2trj4+OpaalrKuzko+MbHBaOlBmVVmrTyx4Rj5VDg5BCgtNTEtr8/buTk9PAAAFpqan/////////v7+////////////////q/r/Du//P/L/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/N/L/IvD/1v3//////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////n56fDAwHgoR9mJeQjYyNl5iYqaelrK6mq66nrKmppKOem5mThol+b2psRj1dO0duTk+Wf1i1Q0KHGyaUOz+6HhxaMzUuZGZhAAAAa2pr/////////v7+////////////////+///S/P/H/D/P/L/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/PPL/QPL/E+//bvb//////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////dXSFAAAzFhtFaWJhr6ynZ29zPThVS0NRTUpQTE9DQENOMSpHMDY4Jiw/ExNtMzCoKSCSLTB9FiOXIy65NTSqAAEljI2E8vPxPD4+rrGx/////////v7+////////////////////zfz/Du//J/H/P/L/PPL/PPL/PPL/PPL/PPL/PPL/PvL/O/L/FfD/I/H/5/7//////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////TUhuCQeICQ2EPTdXtrinS1RUJBphWzmgWESFJTdCBBBcGSCHQ0yhVWeIWWCnHhS1JBq2JiitKSa3FBF6DhA8iI2K////////////////+fv7/////v7+////////////////////////q/n/J/H/E+//LvH/PfL/O/L/O/L/OvL/M/H/HvD/GfD/SfP/y/z//////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////8vLsNzFfLCesDxiKQkhSsLOeTU9HPjJqd1jjRzqzVFWwTEXOLDi1JjyXMTmOPS+1LCS1O0GbGheHBQBKNTJHu724////////9/j4////+f/++/39//7+/v7+////////////////////////////5v3/hff/NfL/FvD/HvD/HfD/IvD/MfH/VvT/sPr//////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////197UMy5VVDO4KiOCSEtQtaylVFhQLzVjT0WmLySdNy+tNiqoHCKSLDGPMxm9JBq/ISF8JScyTUpemZmX///6/////P///f///f//+///+v///P7+/v7+/v7+////////////////////////////////////6P7/rvr/sfr/sfr/wvv/4f3//////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////z9DKJCFLRS+rKR17R0pRs62pUFZQLDGJX1e2VUSbOjatLjGoJiqdMCSvLB+1OEjCIiFzw722////////////+Pz8+v77/v7//f7+/P7+/P/+/f7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////x8i7Gic0KSiiIhiJTVVYq7GdXlpjSjifQ0SfLC95P0eqJynBQUDEPz66ICCaSlyzJC9a3d7H/////v/9/v/7//////7//v7+/v7+/v7+//7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/v7+/v7+/v7+/v7+///+////ub+sOExSQznRGgaSVFVdrLWYaltzVDaQOT+hKS25KjCqExWmOjfCTkfCTT+0ZGetIC1AwcO1/////v/5/v/8/v/+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////2NTSHhtfFgmvAgBpQTxDpaeWUExUGhdFDxx7FAmwMhyhGh5/KjKQOi2gNRujLCOGAAE4xMDG/////f34/////////v7+/////////////v7+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////f392dnZubm5zs7O/Pz83t7e39/f/f399/f3zMvDkY2xhYjGc3SZn5qi1tLReoB6Ynl4Zn2cdXaxloC8gYGzgI+siou4dmq7cXWyZ22Tzs3J////////9/j0////////////////////////////////8PDw/f39////////////////////////////////////////////////////////////////////////////////////////////////8/PzQEBAAwMDlZWVvLy8GhoaR0dHysrKdHR0R0dH1tbO4OLSf4B2jo6O5ubnqKmodnp2r7Os////////////////5OfezdHE////+fr4cXJwd3d36urrrKysZmZmxsbGtLS0WFhYgICA39/fhoaGenp6tra2+/v7////////////////////////////////////////////////////////////////////////////////////////////////8fHxT09PKSkpo6Ojq6urCgoKLy8vwcHBeXl5OTk6jY2Nl5eVJCQjR0dG3Nzc4ODgjY2Nra2s/P36////////////e3p4Pz88oqGfs7KwY2NjgYGBra2tUlJSXl5emJiYo6OjCAgIREREra2tQUFBMjIyj4+P+/v7////////////////////////////////////////////////////////////////////////////////////////////////7e3tVVVVERERo6Ojvr6+CgoKMjIy2traoaGhSkpKrKysr6+vW1tbhoaG8PHxxsXFqqioyMfH6+rq+vr6/f39////hoaGODg49vb2ubm5cHBwmJiYtbW1d3d3aWlpvLy84+PjCQkJTU1N29vbMTExMDAwb29v/Pz8////////////////////////////////////////////////////////////////////////////////////////////////9vb2gYGBAgICk5OT2traHR0dOTk54+PjkZGRS0tLe3t7h4eHiYmJnp6ei4uLnJycsrCwo6GhnJubq6ur////7OzsnJycdHR0wcHBm5ubbGxssLCw7e3tiIiIXFxcra2tn5+fAAAANzc3s7OzIyMjNzc3qqqq////////////////////////////////////////////////////////////////////////////////////////////////////////6enpz8/P4+Pj+vr62tra29vb/Pz81tbW09PT09PT4ODg5OTkysrKurm56urq397e5OTk4uHh0tLS////4eHh3NzczMzMoaGh7u7u4eHh3t7e/f39zs7OwsLC////0tLShoaGg4ODuLi4oKCgmpqaurq6/v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////z8/PmJiYt7e37OzsuLi4gYGBy8vL////////////z8/PhISEhISEz8/P2trag4OD3d3d6urq1dXVvb298fHx1NTUdHR0nZ2d9PT0q6urtLS0/f39////////////////+Pj4+/v7/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/f39/v7+////39/fYGBgT09PgoKCnJycOTk5YWFhra2t1dXVyMjIz8/P5ubme3t7fX195OTkZGRkSkpKfHx8pqamQkJCQ0NDmJiYt7e3TU1NYGBgxsbGRERENTU1vLy8/////v7+/v7+/v7++/v7/Pz8/////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+////////////6OjoeXl5V1dXf39/lpaWYGBgiYmJt7e3l5eXbW1tcnJy/v7+4eHhaGho1dXVhYWFYGBgmJiYwMDATk5OZWVlpaWlnJyca2trVFRU2dnZc3NzWVlZ7e3t/////v7+/////v7+/////////////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+////////6urqZmZmOjo6dXV1mJiYTExMZmZmtra2////////////////sLCwjo6O5eXlrq6uRkZGhoaGioqKY2NjnJyctbW1hYWFNzc3jIyMxsbGaGhoWVlZysrK/////v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////////v7+/v7+/v7+/////Pz87e3tuLi4k5OTm5ubwMDAk5OTuLi4x8fH+fn5////////////wsLC3t7e////xMTEiIiI2NjYx8fHioqKr6+vtbW1tbW1cXFxmZmZu7u7hYWFcHBwwcHB/////v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Pz8////////////////////////////////+/v7/v7+////////////////////////+vr6+/v7////////6urq8fHx/////Pz88fHx8vLy+vr69/f3+Pj4/f39/v7+/v7+/v7+/v7+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////v7+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AAA="
+};
+/*********************************hei hei hei**************************************/
+
+/***********************************************************************/
+function resetObject(object, param) {
+    ScriptManager.popEl(object);
+    if (param && param.parent) param.parent.addChild(object);
+    else $.root.addChild(object);
+    object.transform.matrix3D = null;
+    return object;
+}
+/***********************************************************************/
+function setParameters(object, param) {
+    foreach(param, 
+    function(key, val) {
+        if (object.hasOwnProperty(key)) object['' + key] = val;
+    });
+}
+/***********************************************************************/
+function eraseParameters(param, filter) {
+    var newParam = {};
+    foreach(param, 
+    function(key, val) {
+        if (!filter.hasOwnProperty(key)) newParam['' + key] = val;
+    });
+    return newParam;
+}
 
 function createCanvas(param) {
     var object = resetObject($.createCanvas({
@@ -1296,11 +1327,89 @@ function createCanvas(param) {
     return object;
 };
 
+function createText(str, param) {
+    var object = resetObject($.createComment(str, {
+        lifeTime: 0
+    }), param);
+    object.defaultTextFormat = $.createTextFormat('微软雅黑', (param && param.size) || 14, (param && param.color != null) ? param.color: 0xFFFFFF, false, false, false);
+    object.filters = [];
+    object.text = str;
+    setParameters(object, eraseParameters(param, {
+        parent: 0,
+        size: 0,
+        color: 0
+    }));
+    return object;
+}
+
 function fillRect(g, x, y, width, height, color) {
     g.graphics.beginFill(color);
     g.graphics.drawRect(x, y, width, height);
     g.graphics.endFill();
 };
+
+function rgba2argb(data) {
+	for (var i = 0; i < data.length; i += 4) {
+		var temp = data[i+2];
+		data[i+2] = data[i];
+		data[i] = temp;
+	}
+	return data;
+}
+
+function extract(data) {
+    var bmd = Bitmap.createBitmapData(1, 1);
+    var output = bmd.getPixels(bmd.rect);
+    output.clear();
+    var dataBuffer = [];
+    dataBuffer.length = 4;
+    var outputBuffer = [];
+    outputBuffer.length = 3;
+    var cnt = 0;
+    for (var i = 0; i < data.length; i += 4) {
+        for (var j = 0; j < 4 && i + j < data.length; j++) {
+            dataBuffer[j] = BASE64_CHARS.indexOf(data.charAt(i + j));
+        }
+
+        // attention, bgr to rgb convertion!
+        outputBuffer[2] = (dataBuffer[0] << 2) + ((dataBuffer[1] & 0x30) >> 4);
+        outputBuffer[1] = ((dataBuffer[1] & 0x0f) << 4) + ((dataBuffer[2] & 0x3c) >> 2);
+        outputBuffer[0] = ((dataBuffer[2] & 0x03) << 6) + dataBuffer[3];
+        for (var k = 0; k < outputBuffer.length; k++) {
+        	cnt++;
+            if (dataBuffer[k + 1] == 64) break;
+            if (cnt > 54) { // skip bmp header
+            	if (cnt % 3 == 1) { 
+            		output.writeByte(255); // add alpha channel
+            	};
+            	output.writeByte(outputBuffer[k]);
+            };
+            
+        }
+    }
+    output.position = 0;
+    //output = rgba2argb(output);
+    return output;
+}
+
+function loadBitmapData(width, height, raw) {
+    var bmd = Bitmap.createBitmapData(width, height);
+    trace((extract(raw)).length);
+    bmd.setPixels(bmd.rect, extract(raw));
+    return bmd;
+}
+
+function createBitmap(bitmapData, x, y, lifeTime, scale, parent) {
+    var bmp = Bitmap.createBitmap({
+        bitmapData: bitmapData,
+        lifeTime: lifeTime,
+        parent: parent,
+        scale: scale
+    });
+    bmp.x = x;
+    bmp.y = y;
+    return bmp;
+}
 
 var mainCanvas = $.createCanvas({
     x: 0,
@@ -1309,31 +1418,52 @@ var mainCanvas = $.createCanvas({
 });
 
 var qrcode	= QRCode(-1, 2);
-qrcode.addData("http://www.baidu.com");
+qrcode.addData(qr_options.url);
 qrcode.make();
 
-var options = {
-	position:BOTTOM_RIGHT
-};
-
-var idx = options.position;
+var idx = qr_options.position;
 var qrCanvas = $.createCanvas({
 	x: (posIndex[idx]).x,	
 	y: (posIndex[idx]).y,
-	lifeTime: INT_MAX,
+	lifeTime: qr_options.lifeTime,
 	parent: mainCanvas
 });
 
+// qr_code
 var block_size = height / 6 / qrcode.getModuleCount();
 for( var row = 0; row < qrcode.getModuleCount(); row++ ){
 	for( var col = 0; col < qrcode.getModuleCount(); col++ ){
 		if (qrcode.isDark(row, col)) {
-			fillRect(qrCanvas, col*block_size, row*block_size, block_size, block_size, 0x00FF00);
+			fillRect(qrCanvas, col*block_size, row*block_size, block_size, block_size, qr_options.color);
 		} else {
 			fillRect(qrCanvas, col*block_size, row*block_size, block_size, block_size, 0xFFFFFF);
 		}
-		// var w = (Math.ceil((col+1)*tileW) - Math.floor(col*tileW));
-		// var h = (Math.ceil((row+1)*tileW) - Math.floor(row*tileW));
-		// ctx.fillRect(Math.round(col*tileW),Math.round(row*tileH), w, h);  
 	}	
 }
+
+
+// text
+if (qr_options.text != null) {
+	var text_x = (posIndex[idx]).x + qr_size / 2 - qr_options.text.length/2.0*qr_options.text_size;
+	var text_y;
+	if (idx <= 1) { // top
+		text_y = (posIndex[idx]).y + qr_size + 10;
+	} else { // bottom
+		text_y = (posIndex[idx]).y - qr_options.text_size - 10;
+	}
+	$.createComment(qr_options.text, {
+		x:text_x,
+		y:text_y,
+		fontsize: qr_options.text_size,
+		color: qr_options.text_color,
+		lifeTime:qr_options.lifeTime,
+		font: "微软雅黑"
+	});
+};
+
+// image
+if (qr_options.image_data != null) {
+	var scale = img_size / 64.0;
+	var bmd = loadBitmapData(64, 64, qr_options.image_data);
+	var bmp = createBitmap(bmd, qr_size/2 - img_size/2, qr_size/2 - img_size/2, 0, scale, qrCanvas);
+};
