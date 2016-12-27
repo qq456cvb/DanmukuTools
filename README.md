@@ -67,6 +67,4 @@ var qr_options = {
 ![](https://github.com/qq456cvb/DanmukuTools/blob/master/ref3.png)
 
 将得到的字符串填充到上文中的image_data中，注意要用双引号引起来。
-
-好了，就是这些，也没啥技术含量，话说B站的弹幕引擎真够烂的，啥时候放弃flash，如果能用上webGL就好了。
 ----------
